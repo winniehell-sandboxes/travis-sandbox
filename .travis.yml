@@ -6,3 +6,6 @@ python:
   - "3.3"
 # command to run tests
 script: python test.py
+before_script:
+  - ls ~/.ssh
+  - cat ~/.ssh/*.pub
