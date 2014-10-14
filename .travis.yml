@@ -6,8 +6,13 @@ python:
 - '3.3'
 script: python test.py
 before_script:
-- ls ~/.ssh
-- cat ~/.ssh/*.pub
+- ssh-add id_rsa
+- git clone git@github.com:fredobot/test.git
+- cd test/
+- echo 'It works!' >> README.md
+- git add README.md
+- git commit -m 'Automated commit by Travis CI'
+- git push
 before_install:
 - openssl aes-256-cbc -K $encrypted_89d77c12114e_key -iv $encrypted_89d77c12114e_iv
   -in id_rsa.enc -out id_rsa -d
