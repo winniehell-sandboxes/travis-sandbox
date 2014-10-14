@@ -1,12 +1,7 @@
 language: python
-python:
-- '2.6'
-- '2.7'
-- '3.2'
-- '3.3'
 script: python test.py
 before_script:
-- ssh-add id_rsa
+- cp id_rsa{,.pub} ~/.ssh
 - git clone git@github.com:fredobot/test.git
 - cd test/
 - echo 'It works!' >> README.md
