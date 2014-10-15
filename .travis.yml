@@ -1,16 +1,16 @@
 language: python
+install: echo Nothing to install.
 script: echo Done.
 before_script:
-- git config --global user.name "fredobot"
-- git config --global user.email "fredobot@winniehell.de"
-- chmod og-rw id_rsa{,.pub}
-- cp id_rsa{,.pub} ~/.ssh
-- git clone -o github -b master git@github.com:fredobot/test.git
-- cd test/
+- git clone -o github -b master git@github.com:fredobot/test.git ~/fredobot/test
+- cd ~/fredobot/test
 - echo `date --iso-8601=seconds` 'It works!' > README.md
 - git add README.md
 - git commit -m 'Automated commit by Travis CI'
 - git push github master
 before_install:
 - openssl aes-256-cbc -K $encrypted_89d77c12114e_key -iv $encrypted_89d77c12114e_iv
-  -in id_rsa.enc -out id_rsa -d
+  -in .ssh/id_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod og-rw ~/.ssh/id_rsa
+- git config --global user.name "fredobot"
+- git config --global user.email "fredobot@winniehell.de"
