@@ -1,5 +1,5 @@
 language: python
-install: echo Nothing to install.
+install: "echo Nothing to install. && find .git && cat .git/config"
 script: echo Done.
 before_script:
 - git clone -o github -b master git@github.com:fredobot/test.git ~/fredobot/test
